@@ -1,9 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateDocumentationFile>False</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>SimpleLogger</Title>
+		<PackageProjectUrl>https://github.com/algmironov/SimpleLogger</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/algmironov/SimpleLogger</RepositoryUrl>
+		<PackageTags>logger</PackageTags>
+		<PackAsTool>True</PackAsTool>
+		<AssemblyVersion>1.0.1</AssemblyVersion>
+		<Authors>algmironov</Authors>
+		<Description>SimpleLogger is a lightweight class library that allows easy to use logging both into .log file and console.</Description>
+		<PackageId>SimpleLoggerByAlgmironov</PackageId>
+		<Copyright>MIT License</Copyright>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>embedded</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>embedded</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
 
 </Project>
