@@ -40,26 +40,29 @@ class Program
 {
     static void Main(string[] args)
     {
-        Logger logger = new Logger();
+        var logger = new Logger();
+
+        logger.Info("Hello, SimpleLogger!");
 
         try
         {
-            // Example code that causes an exception
             int result = 10 / int.Parse("0");
         }
         catch (Exception ex)
         {
             logger.Error("An error occurred while performing the operation.", ex);
         }
-
-        logger.Info("This is an informational message.");
-        logger.Warn("This is a warning message.");
-        logger.Fatal("This is a fatal error message.");
-        logger.Debug("This is a debug message.");
     }
 }
 
 ```
+
+## Output examples
+### Console output:
+![console](https://github.com/algmironov/SimpleLogger/blob/master/img/console.png)
+
+### File output:
+![logFile](https://github.com/algmironov/SimpleLogger/blob/master/img/logFile.png)
 
 ## Method Descriptions
 `Log`
