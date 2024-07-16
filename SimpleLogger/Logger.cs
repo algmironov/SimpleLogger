@@ -8,19 +8,21 @@ namespace SimpleLogger
     public class Logger
     {
         private string _folder;
+        private SimpleLoggerOptions _options;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Logger"/> class.
         /// </summary>
         public Logger()
         {
-            var appDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            _folder = Path.Combine(appDirectory, "Logs");
+            _options = new SimpleLoggerOptions();
+            _folder = _options.Folder;
+        }
 
-            if (!Directory.Exists(_folder))
-            {
-                Directory.CreateDirectory(_folder);
-            }
+        public Logger(SimpleLoggerOptions options)
+        {
+            _options = options;
+            _folder = _options.Folder;
         }
 
         /// <summary>
@@ -40,8 +42,21 @@ namespace SimpleLogger
                 var source = filePath.Split('\\').Last();
                 var file = GetCurrentLogFile();
                 var logMessage = $"[{GetCurrentTime()}] {message} --- file: {source} --- method: {memberName} --- line: {lineNumber};\n";
-                File.AppendAllTextAsync(file, logMessage);
-                Console.WriteLine(logMessage);
+
+                switch (_options.LoggingType)
+                {
+                    case LoggingType.ConsoleOnly:
+                        Console.WriteLine(logMessage);
+                        break;
+                    case LoggingType.FileOnly:
+                        File.AppendAllText(file, logMessage);
+                        break;
+                    default:
+                        File.AppendAllText(file, logMessage);
+                        Console.WriteLine(logMessage);
+                        break;
+                }
+                
             }
             catch (Exception ex)
             {
@@ -88,12 +103,12 @@ namespace SimpleLogger
         {
             try
             {
-                var errorMessage = $"ERROR: {message} at : {ex.StackTrace.Split(':').Last()}";
+                var errorMessage = $"ERROR: {message} --- Exception: {ex.Message} --- at : {ex.StackTrace.Split(':').Last()}";
                 Log(errorMessage, memberName, filePath, lineNumber);
             }
             catch (Exception)
             {
-                var errorMessage = $"ERROR: {message}";
+                var errorMessage = $"ERROR: {message} --- Exception: {ex.Message}";
                 Log(errorMessage, memberName, filePath, lineNumber);
             }
             
@@ -141,7 +156,8 @@ namespace SimpleLogger
             {
                 return filePath;
             }
-            File.Create(filePath);
+            File.Create(filePath).Close();
+
             return filePath;
         }
 
