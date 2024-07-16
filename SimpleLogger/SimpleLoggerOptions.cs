@@ -22,12 +22,14 @@ namespace SimpleLogger
         /// Specifies the folder path where log files will be stored.
         /// Default is a folder named "Logs" within the application's base directory.
         /// </summary>
-        public string Folder {  get; set; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
-
+        public string Folder {  get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleLoggerOptions"/> class with default values.
         /// </summary>
-        public SimpleLoggerOptions() { }
+        public SimpleLoggerOptions() 
+        {
+            Folder = InitDirectory();
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleLoggerOptions"/> class with the specified logging type.
@@ -36,6 +38,17 @@ namespace SimpleLogger
         public SimpleLoggerOptions(LoggingType loggingType)
         {
             LoggingType = loggingType;
+            Folder = InitDirectory();
+        }
+
+        private static string InitDirectory()
+        {
+            var directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
+            if(!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            return directory;
         }
 
         /// <summary>
