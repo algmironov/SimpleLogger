@@ -1,5 +1,9 @@
 # SimpleLogger
 
+For English, please refer to [README.md](README.md).
+
+Для русского языка, пожалуйста, смотрите [README.ru.md](README.ru.md).
+
 SimpleLogger is a simple and powerful logging library for C# that allows logging messages of various levels (information, warnings, errors, fatal errors, and debug messages) to files, supporting log rotation by day.
 
 ## Features
