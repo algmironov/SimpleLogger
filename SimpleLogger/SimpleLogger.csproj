@@ -11,7 +11,7 @@
 		<RepositoryUrl>https://github.com/algmironov/SimpleLogger</RepositoryUrl>
 		<PackageTags>logger</PackageTags>
 		<PackAsTool>True</PackAsTool>
-		<AssemblyVersion>1.0.1</AssemblyVersion>
+		<AssemblyVersion>1.1.0</AssemblyVersion>
 		<Authors>algmironov</Authors>
 		<Description>SimpleLogger is a lightweight class library that allows easy to use logging both into .log file and console.</Description>
 		<PackageId>SimpleLoggerByAlgmironov</PackageId>
@@ -25,6 +25,11 @@
 
 	<PropertyGroup>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Version>1.1.0</Version>
+		<PackageReleaseNotes>Added SimpleLoggerOptions instance for configuring logger options:
+- now you may set up a folder for logs. It still creates a Logs folder by default;
+- now you may choose where to write logs: only to file, only to console or as previously to both file and console.
+Added tests.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -32,7 +37,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="\"/>
+		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 </Project>

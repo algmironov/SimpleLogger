@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerTestApp", "LoggerTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLoggerTests", "SimpleLoggerTests\SimpleLoggerTests.csproj", "{2831152B-C481-409F-92C5-BB7775999E89}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{BE44975F-B637-45BC-9328-9A80457C1AB0}"
+	ProjectSection(SolutionItems) = preProject
+		README.ru.md = README.ru.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -19,6 +19,10 @@ namespace SimpleLogger
             _folder = _options.Folder;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Logger"/> class with options <see cref="SimpleLoggerOptions"/>.
+        /// <param name="options"/>Logger options</param>
+        /// </summary>
         public Logger(SimpleLoggerOptions options)
         {
             _options = options;
