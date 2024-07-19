@@ -1,5 +1,41 @@
 <html lang="ru">
 
+### v1.1.2 Заметки о выпуске
+- Добавлена возможность выбора: создавать папку по-умолчанию для логов или использовать свою директорию;
+  
+```csharp
+// логгер с дефолтными значениями
+var logger = new Logger();
+
+// логгер. использующий свою директорию для логов
+var logger = new Logger( new SimpleLoggerOptions
+{
+    Folder = "C:\\Users\\username\\logs"
+}) ;
+```
+- Добавлена возможность выбора типа логирования:
+      - запись логов только в консоль
+      - запись логов только в файл
+      - по-умолчанию запись логов в файл и консоль
+  
+```csharp
+// запись логов только в консоль
+var options = new SimpleLoggerOptions
+{
+    LoggingType = LoggingType.ConsoleOnly
+};
+
+var logger = new Logger(options);
+
+// запись логов только в файл
+var options = new SimpleLoggerOptions
+{
+    LoggingType = LoggingType.FileOnly,
+};
+
+var logger = new Logger(options);
+```
+
 ## SimpleLogger
 
 SimpleLogger - это простая и мощная библиотека для логирования на C#, позволяющая логировать сообщения различного уровня (информационные, предупреждения, ошибки, фатальные ошибки и отладочные сообщения) в файлы с поддержкой формирования логов по дням.
