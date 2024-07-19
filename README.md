@@ -4,6 +4,42 @@ For English, please refer to [README.md](README.md).
 
 Для русского языка, пожалуйста, смотрите [README.ru.md](README.ru.md).
 
+### v1.1.2 Notes
+- Addeв availability to choose: create default 'logs' folder or use custom path;
+  
+```csharp
+// logger with default options
+var logger = new Logger();
+
+// logger with custom 'logs' folder
+var logger = new Logger( new SimpleLoggerOptions
+{
+    Folder = "C:\\Users\\username\\logs"
+}) ;
+```
+- Added availability to choose which logging type to use:
+    - write only to console
+    - write only to file
+    - write as default to both file and console
+ 
+```csharp
+// logger with only console logs
+var options = new SimpleLoggerOptions
+{
+    LoggingType = LoggingType.ConsoleOnly
+};
+
+var logger = new Logger(options);
+
+// logger with only file logs
+var options = new SimpleLoggerOptions
+{
+    LoggingType = LoggingType.FileOnly,
+};
+
+var logger = new Logger(options);
+```
+
 SimpleLogger is a simple and powerful logging library for C# that allows logging messages of various levels (information, warnings, errors, fatal errors, and debug messages) to files, supporting log rotation by day.
 
 ## Features
